@@ -81,7 +81,7 @@ class Diagrams(SphinxDirective):
         node["code"] = diagram_code
         node["options"] = {"docname": self.env.docname}
         if OPTION_FILENAME not in self.options:
-            inferred_filename = f"{Path(filename).stem}.svg"
+            inferred_filename = f"{Path(filename).stem}.png"
             node["options"][OPTION_FILENAME] = inferred_filename
             document.reporter.info(
                 __(
@@ -104,8 +104,8 @@ def render_diagrams(
     self: SphinxTranslator, code: str, options: Dict, prefix: str = "diagrams"
 ) -> Tuple[str, str]:
     fname: str = options[OPTION_FILENAME]
-    if not fname.endswith(".svg"):
-        fname += ".svg"
+    if not fname.endswith(".png"):
+        fname += ".png"
 
     relfn = posixpath.join(self.builder.imgpath, fname)
     cwd = path.join(self.builder.outdir, self.builder.imagedir)
